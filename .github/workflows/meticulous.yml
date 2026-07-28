@@ -1,0 +1,43 @@
+name: Meticulous
+
+# workflow_dispatch is required: Meticulous re-runs the workflow on the base
+# commit when it needs a baseline to compare a PR against.
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  report-diffs:
+    name: Report visual diffs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build the app image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          tags: kanban-demo:${{ github.sha }}
+          push: false
+          # buildx keeps images in its own store by default; upload-container
+          # reads from the Docker daemon, so the image has to be loaded into it.
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - uses: alwaysmeticulous/report-diffs-action/upload-container@v1
+        with:
+          api-token: ${{ secrets.METICULOUS_API_TOKEN }}
+          image-tag: kanban-demo:${{ github.sha }}
