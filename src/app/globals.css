@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (Tailwind v4 defaults to the OS media query). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+}
+
+/* A grabbed card should not select text under the pointer. */
+body[data-dragging="true"] {
+  @apply select-none;
+  cursor: grabbing;
+}

@@ -1,0 +1,10 @@
+allowBuilds:
+  sharp: true
+
+# next 16.2.11 pins postcss to exactly 8.4.31 and sharp to ^0.34.5, both of
+# which carry advisories, and 16.2.11 is the latest release — so the patched
+# versions have to be forced. postcss ^8.5.23 is what Tailwind already resolves,
+# so this also collapses the two copies into one.
+overrides:
+  postcss: ^8.5.23
+  sharp: ^0.35.3
