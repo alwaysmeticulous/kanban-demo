@@ -1,0 +1,14 @@
+# Files that never execute in the browser, excluded so coverage reflects only
+# code a recorded session can actually reach.
+#
+# Both are React Server Components (no "use client"): their module code runs
+# during SSR and is never shipped to the client, so browser coverage cannot move
+# them off 0%. Every interactive part of the app lives in src/components and
+# src/lib, which are client components and are covered.
+#
+# Caveat: the inline theme-init script in layout.tsx *does* run in the browser,
+# but as a standalone inline <script> — it is not attributed to this module. And
+# if server-side coverage is ever ingested (serverSourceMaps is enabled), these
+# files would become genuinely coverable and this ignore would hide real signal.
+src/app/layout.tsx
+src/app/page.tsx
