@@ -36,8 +36,17 @@ jobs:
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          # Still a production build — only source maps are switched on, so
+          # Meticulous can map coverage back to the original files. A real
+          # production build omits both and therefore ships no maps.
+          build-args: |
+            METICULOUS_BUILD=true
+            METICULOUS_SOURCE_MAPS=true
 
       - uses: alwaysmeticulous/report-diffs-action/upload-container@v1
         with:
           api-token: ${{ secrets.METICULOUS_API_TOKEN }}
           image-tag: kanban-demo:${{ github.sha }}
+          # Also passed at runtime so server-side code can detect the replay.
+          container-env: |
+            METICULOUS_BUILD=true
