@@ -18,6 +18,12 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Set by the Meticulous workflow, unset for a real production build. The former
+# marks this as a build under test; the latter turns on source maps.
+ARG METICULOUS_BUILD
+ARG METICULOUS_SOURCE_MAPS
+ENV METICULOUS_BUILD=$METICULOUS_BUILD
+ENV METICULOUS_SOURCE_MAPS=$METICULOUS_SOURCE_MAPS
 RUN pnpm build
 
 FROM base AS runner
