@@ -36,7 +36,7 @@ export function Toolbar() {
   };
 
   return (
-    <header className="shrink-0 border-b border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900">
+    <header className="shrink-0 border-b border-slate-200 bg-sky-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-900">
       <div className="flex flex-wrap items-center gap-3">
         <div className="mr-auto flex items-baseline gap-3">
           <h1 className="text-lg font-semibold tracking-tight">Platform board</h1>
