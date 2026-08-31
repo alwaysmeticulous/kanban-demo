@@ -133,7 +133,9 @@ export function Card({ card, columnId, onPointerDown, onKeyboardMove }: CardProp
         >
           {card.priority}
         </span>
-        <span className="text-[11px] text-slate-400">{card.points} pts</span>
+        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">
+          {card.points} pts
+        </span>
         <span className="text-[11px] text-slate-400">{formatDate(card.createdAt)}</span>
 
         <div className="ml-auto flex items-center gap-1">

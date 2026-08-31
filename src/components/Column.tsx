@@ -76,7 +76,9 @@ export function Column({
         <span className="rounded-full bg-slate-200 px-2 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
           {cards.length}
         </span>
-        <span className="ml-auto text-xs text-slate-400">{points} pts</span>
+        <span className="ml-auto rounded-full bg-slate-200 px-2 py-0.5 text-xs font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+          {points} pts
+        </span>
       </div>
 
       <div
