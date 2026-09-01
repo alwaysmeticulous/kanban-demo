@@ -89,7 +89,10 @@ export function Card({ card, columnId, onPointerDown, onKeyboardMove }: CardProp
       {card.labels.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-1">
           {card.labels.map((labelId) => (
-            <Badge key={labelId} className={LABELS_BY_ID[labelId].className}>
+            <Badge
+              key={labelId}
+              className={cx("px-2 py-0.5 text-[11px]", LABELS_BY_ID[labelId].className)}
+            >
               {LABELS_BY_ID[labelId].name}
             </Badge>
           ))}

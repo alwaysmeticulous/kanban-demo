@@ -5,11 +5,7 @@ interface BadgeProps {
   children: React.ReactNode;
 }
 
-/** Shared pill-chip look for labels, counts, and other small static badges. */
+/** Shared pill-chip shape for labels, counts, and other small static badges. */
 export function Badge({ className, children }: BadgeProps) {
-  return (
-    <span className={cx("rounded-full px-2 py-0.5 text-[11px] font-medium", className)}>
-      {children}
-    </span>
-  );
+  return <span className={cx("rounded-full font-medium", className)}>{children}</span>;
 }
