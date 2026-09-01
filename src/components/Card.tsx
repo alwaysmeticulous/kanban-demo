@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { Badge } from "@/components/Badge";
 import { LABELS_BY_ID } from "@/lib/fixtures";
 import { useBoard, useUi } from "@/lib/store";
 import type { Card as CardModel, ColumnId } from "@/lib/types";
@@ -88,15 +89,12 @@ export function Card({ card, columnId, onPointerDown, onKeyboardMove }: CardProp
       {card.labels.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-1">
           {card.labels.map((labelId) => (
-            <span
+            <Badge
               key={labelId}
-              className={cx(
-                "rounded-full px-2 py-0.5 text-[11px] font-medium",
-                LABELS_BY_ID[labelId].className,
-              )}
+              className={cx("px-2 py-0.5 text-[11px]", LABELS_BY_ID[labelId].className)}
             >
               {LABELS_BY_ID[labelId].name}
-            </span>
+            </Badge>
           ))}
         </div>
       )}
