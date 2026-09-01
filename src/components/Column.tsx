@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react";
 
+import { Badge } from "@/components/Badge";
 import { Card as CardView } from "@/components/Card";
 import { useBoard, useUi } from "@/lib/store";
 import type {
@@ -73,9 +74,9 @@ export function Column({
     >
       <div className="flex items-center gap-2 px-3 pt-3 pb-2">
         <h2 className="text-sm font-semibold">{column.title}</h2>
-        <span className="rounded-full bg-slate-200 px-2 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+        <Badge className="bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
           {cards.length}
-        </span>
+        </Badge>
         <span className="ml-auto text-xs text-slate-400">{points} pts</span>
       </div>
 
